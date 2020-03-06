@@ -342,4 +342,35 @@ config ARCH_ZYNQMP
 	help
 	  This enables support for Xilinx ZynqMP Family
 
+config MACH_ASUS
+	bool "ASUS devices"
+	help
+	  This enables support for ASUS devices.
+
+if MACH_ASUS
+
+config MACH_ASUS_SDM632
+	bool
+	select ARCH_QCOM
+	select ARCH_SDM632
+
+choice
+	prompt "ASUS device"
+	default MACH_ASUS_DUMMY
+
+config MACH_ASUS_DUMMY
+	bool "Dummy device"
+	help
+	  A stub configuration that doesn't enable support for anything.
+
+config MACH_ASUS_X01AD
+	bool "ZenFone Max (M2)"
+	select MACH_ASUS_SDM632
+	help
+	  This enables support for ASUS ZenFone Max (M2).
+
+endchoice
+
+endif
+
 endmenu
